@@ -18,7 +18,7 @@ app.post('/tasKs', async (req, res) => {
   const jsonPost = req.body
   const arrayToodos = JSON.parse(await fs.readFile(jsonPath, 'utf8'))
   // dandole un id
-  const lastId = arrayToodos[arrayToodos.length - 1].id + 1
+  const lastId = arrayToodos.length + 1
   arrayToodos.push({ id: lastId, ...jsonPost }) // desestructuracion de array
   await fs.writeFile(jsonPath, JSON.stringify(arrayToodos))
   res.end()
